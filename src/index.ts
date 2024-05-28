@@ -8,6 +8,8 @@ const replayId = '930826dd-74ba-45a2-806f-d6578b549a6a'
 const gameSource = `https://storage.googleapis.com/mitbattlecode-production-secure/episode/bc24/replays/${replayId}.bc24`
 
 async function main() {
+    let levelsAggregate = [0, 0, 0]
+
     const fetchRemoteGame = await fetch(gameSource)
         .then((response) => response.arrayBuffer())
         .then((buffer) => {
@@ -54,8 +56,16 @@ async function main() {
             const levelsTotal = levelsSlice.reduce((a, b) => a + b)
             const levelsNormed = levelsSlice.map((l) => l / levelsTotal)
 
+            for (const i in levelsAggregate) {
+                levelsAggregate[i] += levelsNormed[i]
+            }
         }
     }
+
+    const levelsNormed = levelsAggregate.map((l) => Math.round((l / (game.matches.length * 2)) * 100))
+    console.log(
+        `Specialization levels: ${levelsNormed[0]}% attack, ${levelsNormed[1]}% build, ${levelsNormed[2]}% heal`
+    )
 }
 
 main().catch((reason) => {
