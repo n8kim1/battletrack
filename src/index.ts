@@ -19,6 +19,10 @@ async function main() {
     const buffer = fetchRemoteGame
     var game = Game.loadFullGameRaw(buffer)
     console.log('Analyzing match from', gameSource)
+
+    for (const match of game.matches) {
+    }
+
 }
 
 main().catch((reason) => {
