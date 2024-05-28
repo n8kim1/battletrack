@@ -21,8 +21,14 @@ async function main() {
     console.log('Analyzing match from', gameSource)
 
     for (const match of game.matches) {
-    }
+        let currentTurnNumber = -1
+        let maxTurn = match.maxTurn
 
+        while (currentTurnNumber < maxTurn) {
+            match.stepTurn(1, false, true)
+            currentTurnNumber = match.currentTurn.turnNumber
+        }
+    }
 }
 
 main().catch((reason) => {
