@@ -1,3 +1,5 @@
+import { Action } from 'battlecode-schema/js/battlecode/schema/action'
+import { ACTION_DEFINITIONS } from '../../src/playback/Actions'
 import Game from '../../src/playback/Game'
 
 // TODO method from id to url of game source, using the helper method
@@ -27,8 +29,15 @@ async function main() {
         while (currentTurnNumber < maxTurn) {
             match.stepTurn(1, false, true)
             currentTurnNumber = match.currentTurn.turnNumber
+
+            // Analyze actions per round. (Can analyze bodies, etc, in a similar way)
+            const actions = match.currentTurn.actions.actions
+            for (const action of actions) {
+                if (action instanceof ACTION_DEFINITIONS[Action.CAPTURE_FLAG]) {
+                    console.log('flag captured!', 'turn ', currentTurnNumber)
+                }
+            }
         }
-    }
 }
 
 main().catch((reason) => {
