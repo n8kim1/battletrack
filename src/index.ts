@@ -38,6 +38,24 @@ async function main() {
                 }
             }
         }
+
+        // Analyze team stats per match
+        const stats = match.currentTurn.stat
+        const teams = game.teams
+
+        for (const team of teams) {
+            const teamStat = stats.getTeamStat(team)
+            const levels = teamStat.specializationTotalLevels
+
+            // Do some example math.
+            // (Aggregate _relative_ usage of each specialization,
+            // for consistent aggregation)
+            const levelsSlice = levels.slice(1, 4)
+            const levelsTotal = levelsSlice.reduce((a, b) => a + b)
+            const levelsNormed = levelsSlice.map((l) => l / levelsTotal)
+
+        }
+    }
 }
 
 main().catch((reason) => {
