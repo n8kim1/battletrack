@@ -1,3 +1,5 @@
+import * as fs from 'fs'
+
 import { Action } from 'battlecode-schema/js/battlecode/schema/action'
 import { ACTION_DEFINITIONS } from '../../../src/playback/Actions'
 import Game from '../../../src/playback/Game'
@@ -73,8 +75,19 @@ async function main() {
     console.log(
         `Specialization levels: ${levelsNormed[0]}% attack, ${levelsNormed[1]}% build, ${levelsNormed[2]}% heal`
     )
+
+    return levelsNormed
 }
 
-main().catch((reason) => {
-    console.log('Error:', reason)
-})
+main()
+    .catch((reason) => {
+        console.log('Error:', reason)
+    })
+    .then((value) => {
+        if (value) {
+            fs.writeFile('mynewfile3.txt', value.toString(), (err) => {
+                if (err) throw err
+                console.log('The file has been saved!')
+            })
+        }
+    })
