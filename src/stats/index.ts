@@ -1,8 +1,7 @@
 import { Action } from 'battlecode-schema/js/battlecode/schema/action'
-import { ACTION_DEFINITIONS } from '../../src/playback/Actions'
-import Game from '../../src/playback/Game'
-import Match from '../../src/playback/Match'
-
+import { ACTION_DEFINITIONS } from '../../../src/playback/Actions'
+import Game from '../../../src/playback/Game'
+import Match from '../../../src/playback/Match'
 
 // TODO method from id to url of game source, using the helper method
 // or this can be integrated w tournament methods later right
