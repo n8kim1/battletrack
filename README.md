@@ -4,7 +4,8 @@ Massively in development
 
 ## Instructions
 
-- To generate stats, run `npx ts-node src/index.ts`
+- To generate stats, run `npx ts-node src/index.ts` from the battletrack subfolder
+- To use the dashboard locally, run `npm run battletrack-watch --config webpack-battletrack.config.js` from the client subfolder
 
 ## Cool things to consider doing
 
