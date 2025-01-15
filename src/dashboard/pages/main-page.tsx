@@ -9,11 +9,10 @@ export const MainPage: React.FC = () => {
         const matchArrayBuffer = await fetchMatch()
         // TODO don't rule out 0; handle void properly
         if (matchArrayBuffer) {
-            updateState(matchArrayBuffer.byteLength)
-
             // Some other stuff here, using the renderer. maybe
             const game = Game.loadFullGameRaw(matchArrayBuffer)
             console.log('game', game)
+            updateState(game.matches[0].maxRound)
         }
     }
 
@@ -21,5 +20,5 @@ export const MainPage: React.FC = () => {
         loadMatchBuffers()
     })
 
-    return <div>Main Page , neat, dataInState ${dataInState}</div>
+    return <div>Game 1 has {dataInState} rounds</div>
 }
