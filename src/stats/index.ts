@@ -15,7 +15,7 @@ export function fetchMatch() {
                 throw Error
             }
             console.log('buffer loaded, byteLength', buffer.byteLength)
-            return buffer.byteLength
+            return buffer
             // var game = Game.loadFullGameRaw(buffer)
             // console.log('Analyzing match from', gameSource)
             // return game.matches

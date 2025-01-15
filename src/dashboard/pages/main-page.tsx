@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { fetchMatch } from '../../stats'
+import Game from '../../../../src/playback/Game'
 
 export const MainPage: React.FC = () => {
     const [dataInState, updateState] = useState(0)
 
     async function loadMatchBuffers() {
-        const data = await fetchMatch()
+        const matchArrayBuffer = await fetchMatch()
         // TODO don't rule out 0; handle void properly
-        if (data) {
-            updateState(data)
+        if (matchArrayBuffer) {
+            updateState(matchArrayBuffer.byteLength)
+
+            // Some other stuff here, using the renderer. maybe
+            const game = Game.loadFullGameRaw(matchArrayBuffer)
+            console.log('game', game)
         }
-        return data
     }
 
     useEffect(() => {
