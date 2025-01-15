@@ -7,7 +7,8 @@ import { MainPage } from './pages/main-page'
 const elem = document.getElementById('root')
 const root = ReactDom.createRoot(elem!)
 root.render(
-    <BrowserRouter>
-        <MainPage />
-    </BrowserRouter>
+    // <BrowserRouter>
+    <MainPage />
+    // </BrowserRouter>
+    // <div>App.tsx</div>
 )

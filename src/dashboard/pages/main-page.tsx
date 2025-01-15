@@ -1,36 +1,21 @@
-import React from 'react'
-import { SPECIALTY_COLORS } from '../../../../src/constants'
-import { CanvasHistogram } from '../../../../src/components/sidebar/game/quick-histogram'
+import React, { useEffect, useState } from 'react'
+import { fetchMatch } from '../../stats'
 
 export const MainPage: React.FC = () => {
-    const data = [
-        [0.3, 0.3, 0.4],
-        [0.8, 0.2, 0.2]
-    ]
+    const [dataInState, updateState] = useState(0)
 
-    const getData = (index: number) => {
-        return data[index]
+    async function loadMatchBuffers() {
+        const data = await fetchMatch()
+        // TODO don't rule out 0; handle void properly
+        if (data) {
+            updateState(data)
+        }
+        return data
     }
 
-    return (
-        <div className="flex overflow-hidden">
-            <div className="w-full h-screen flex justify-center">Main page here</div>
-            <div className="mt-2 px-2 w-full d-flex flex-column">
-                <h2 className="mx-auto text-center">Specialty breakdown</h2>
-                {[0, 1].map((index) => (
-                    <div className="flex flex-row" key={index}>
-                        <CanvasHistogram
-                            key={index}
-                            data={getData(index)}
-                            width={110}
-                            height={100}
-                            margin={{ top: 10, right: 10, bottom: 20, left: 20 }}
-                            color={SPECIALTY_COLORS[0]}
-                            resolution={1.5}
-                        />
-                    </div>
-                ))}
-            </div>
-        </div>
-    )
+    useEffect(() => {
+        loadMatchBuffers()
+    })
+
+    return <div>Main Page , neat, dataInState ${dataInState}</div>
 }

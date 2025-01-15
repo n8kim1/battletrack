@@ -1,13 +1,15 @@
-// If I load this code from a broser context, can I use Game and Match?
+const fs = require('fs')
+const { Readable } = require('stream')
+const { finished } = require('stream/promises')
+import { ReadableStream } from 'stream/web'
+
 // import Game from '../../../src/playback/Game'
 // import Match from '../../../src/playback/Match'
 import { matches } from './match'
 
-export function fetchMatch() {
-    // return matches.map((match) => {
+for (const match of matches) {
     // TODO check the pathing
-    const match = matches[0]
-    return fetch(`http://localhost:3000/battletrack/data/${match.uuid}.${match.episode}`)
+    fetch(`localhost:3000/battletrack/data/${match.uuid}.${match.episode}`)
         .then((response) => response.arrayBuffer())
         .then((buffer) => {
             if (buffer.byteLength === 0) {
@@ -15,13 +17,11 @@ export function fetchMatch() {
                 throw Error
             }
             console.log('buffer loaded, byteLength', buffer.byteLength)
-            return buffer.byteLength
             // var game = Game.loadFullGameRaw(buffer)
             // console.log('Analyzing match from', gameSource)
             // return game.matches
         })
         .catch((e) => console.error(e))
-    // })
 }
 
 // fetchRemoteGame(gameSource)

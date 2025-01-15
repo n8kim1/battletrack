@@ -4,16 +4,19 @@ Massively in development
 
 ## Instructions
 
-- To download matches, go into the `battletrack` subfolder. (This location is important!) Then run `npx ts-node src/stats/download.ts`.
+- To download matches, go into the `battletrack` subfolder. (This location is important! TODO automated check for it) Then run `npx ts-node src/stats/download.ts`.
 - To generate stats, run `npx ts-node src/index.ts` from the battletrack subfolder
-- To use the dashboard locally, run `npm run battletrack-watch --config webpack-battletrack.config.js` from the client subfolder
+- To use the dashboard locally, from the `client` folder, run `npm run battletrack-watch --config webpack-battletrack.config.js`. 
 
 ## Cool things to consider doing
 
 ### MVP
 
+- Split up client, into Model and View
+ - Move Model to a folder
+- Caching matches
 - Get all matches in a tournament
-- Get all matches over multiple tournaments
+ - Saving matches
 - Simple visualization on a website
   - Use same graphing framework as client does
 
