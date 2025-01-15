@@ -1,0 +1,1 @@
+Stores replay data on the running machine. Gitignored
