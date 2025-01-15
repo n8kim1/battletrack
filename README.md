@@ -4,6 +4,7 @@ Massively in development
 
 ## Instructions
 
+- To download matches, go into the `battletrack` subfolder. (This location is important!) Then run `npx ts-node src/stats/download.ts`.
 - To generate stats, run `npx ts-node src/index.ts` from the battletrack subfolder
 - To use the dashboard locally, run `npm run battletrack-watch --config webpack-battletrack.config.js` from the client subfolder
 
