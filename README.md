@@ -19,6 +19,8 @@ Massively in development
  - Saving matches
 - Simple visualization on a website
   - Use same graphing framework as client does
+- Clean up the code
+- Consider cleaning git history
 
 ### Code simplifications
 
