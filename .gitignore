@@ -5,3 +5,4 @@ examples/
 *.bc*
 **/.DS_Store
 packaged/
+data/
