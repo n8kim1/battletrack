@@ -3,6 +3,18 @@ import Match from '../../../src/playback/Match'
 import { matches } from './match'
 import { RobotType, SpawnAction } from 'battlecode-schema/js/battlecode/schema'
 
+
+
+const RobotTypeToName: Record<RobotType, string> = {
+    [RobotType.NONE]: 'NONE',
+    [RobotType.PAINT_TOWER]: 'Paint tower',
+    [RobotType.MONEY_TOWER]: 'Money tower',
+    [RobotType.DEFENSE_TOWER]: 'Defense tower',
+    [RobotType.SOLDIER]: 'Soldier',
+    [RobotType.SPLASHER]: 'Splasher',
+    [RobotType.MOPPER]: 'Mopper'
+}
+
 export function spawnsPerMatch(match: Match) {
     let spawnsEachType = new Map<RobotType, number>()
 
@@ -36,7 +48,12 @@ export function spawnsPerMatch(match: Match) {
     // To store in React state for display, need a more serializable / printable version
     // TODO turn this into an array or smth, that can be manipulated easily by callers
 
-    return `${[...spawnsEachType]}`
+    let spawnsDisplay = ''
+    for (const [robotType, spawnCount] of spawnsEachType) {
+        spawnsDisplay += `${RobotTypeToName[robotType]}: ${spawnCount}, \n`
+    }
+
+    return `${spawnsDisplay}`
 }
 
 export function getMatchData() {
