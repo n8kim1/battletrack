@@ -66,7 +66,8 @@ export function getMatchData() {
                 throw Error
             }
             var game = Game.loadFullGameRaw(buffer)
-            const spawns = spawnsPerMatch(game.matches[0])
+            // Match number hardcoded, feel free to change
+            const spawns = spawnsPerMatch(game.matches[4])
 
             return spawns
         })
