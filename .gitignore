@@ -1,0 +1,8 @@
+node_modules
+dist/
+packaged-client/
+examples/
+*.bc*
+**/.DS_Store
+packaged/
+data/
